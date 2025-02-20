@@ -182,4 +182,32 @@ public class ProductRepositoryTest {
         Iterator<Product> productIterator = productRepository.findAll();
         assertFalse(productIterator.hasNext());
     }
+
+    @Test
+    void testCreateWithoutProductId() {
+        Product product = new Product();
+        product.setProductName("Sampo Cap Bambang");
+        product.setProductQuantity(100);
+
+        Product savedProduct = productRepository.create(product);
+
+        assertNotNull(savedProduct.getProductId(), "Product ID should be generated automatically if null");
+        assertEquals("Sampo Cap Bambang", savedProduct.getProductName());
+        assertEquals(100, savedProduct.getProductQuantity());
+    }
+
+    @Test
+    void testFindByIdOfTwoProducts() {
+        Product product1 = new Product();
+        product1.setProductName("Sampo Cap Cantika");
+        product1.setProductQuantity(110);
+        productRepository.create(product1);
+        Product product2 = new Product();
+        product2.setProductName("Sampo Cap Agus");
+        product2.setProductQuantity(420);
+        productRepository.create(product2);
+
+        Product result = productRepository.findById(product2.getProductId());
+        assertEquals(product2.getProductId(), result.getProductId());
+    }
 }
