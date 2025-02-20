@@ -5,8 +5,11 @@ import id.ac.ui.cs.advprog.eshop.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import java.util.List;
 
 @Controller
@@ -24,7 +27,7 @@ public class ProductController {
     }
 
     @PostMapping("/create")
-    public String createProductPost(@ModelAttribute Product product, Model model) {
+    public String createProductPost(@ModelAttribute Product product) {
         service.create(product);
         return "redirect:list";
     }
@@ -37,7 +40,7 @@ public class ProductController {
     }
 
     @PostMapping("/delete/{productId}")
-    public String deleteProductPost(Model model, @PathVariable("productId") String productId) {
+    public String deleteProductPost(@PathVariable("productId") String productId) {
         service.delete(productId);
         return "redirect:/product/list";
     }
