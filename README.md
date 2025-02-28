@@ -1,12 +1,47 @@
 **Nama**: Alyssa Layla Sasti  <br /> 
 **Kelas**: AdPro B  <br />
 **NPM**: 2306152052 <br />
+## Link Deployment:
+https://armed-adelaida-alyssalayla-573dd321.koyeb.app
+
+<details>
+<summary><b>REFLECTION MODULE 3</b></summary>
+Apply the SOLID principles you have learned. You are allowed to modify the source code according to the principles you want to implement. Please answer the following questions: 
+
+1. Explain what principles you apply to your project!
+    - Single Responsibility Principle (SRP)
+        Saya memindahkan `CarController` yang tadinya berada dan extends dengan `ProductController` menjadi file terpisah khusus `CarController`. 
+        Hal ini dikarenakan keduanya memiliki fungsi yang berbeda dan tidak perlu untuk dihubungkan dengan inheritance. Lebih baik apabila dibuat
+        file terpisah saja agar setiap class memiliki satu tanggung jawab sesuai prinsip SRP.
+    - Open-Closed Principle(OCP)
+        Kode saya sudah menerapkan Open-Closed Principle yaitu open for extension and closed for modification. Hal ini dapat dilihat dari adanya controller yang memungkinkan 
+        adanya penambahan routes tanpa mengubah fungsionalitas yang ada. Juga dengan adanya perubahan pada `CarContoller` yang mana mengubah data types untuk `carService` dari
+        `CarServiceImpl` menjadi interface `CarService`.
+    - Liskov Substitution Principle
+        Memindahkan `CarController` menjadi independent class merupakan salah satu penerapan LSP. Dikarenakan fungsi dan cara kerja yang dimiliki `CarController` berbeda dengan
+        `ProductController`. Jika `CarController` menjadi subclass dari `ProductController` ini tidak sesuai dengan prinsip LSP juga.
+    - Interface Segregation Principle (ISP)
+         Program yang sudah dibuat telah menerapkan ISP. Hal ini dapat dilihat dari interface yang ada dibuat spesifik sesuai tugasnya dan method yang ada pun spesifik sesuai 
+         kebutuhan pada class tersebut.
+    - Dependency Inversion Principle (DIP)
+         Prinsip DIP mengatakan bahwa ketergantungan lebih baik ditujukan ke suatu interface class dibanding ke concrete class. Dengan mengganti data types `CarSeviceImpl` 
+         menjadi `CarService` merupakan penerapan yang saya lakukan. Dikarenakan saya menujukan ketergantungan ke interface class yang bersifat abstract dibanding ditujukan ke kelas yang bersifat concrete
+
+2.  Explain the advantages of applying SOLID principles to your project with examples.
+    Dengan menggunakan SOLID, kita dapat meningkatkan efektivitas, keterbacaan, efisiensi, dan fleksibilitas dalam pengerjaan kode. Kode kita juga menjadi lebih mudah dipahami sehingga memudahkan apabila adanya
+    modifikasi oleh suatu tim dengan jumlah programmer lebih dari satu orang. Kemudian juga SOLID membuat projek kita menjadi maintainable, sehingga mudah apabila projek ditujukan untuk jaga panjang, lebih mudah 
+    dan cepat apabila ingin dilakukan suatu pengembangan atau penambahan fitur pada projek tersebut. Contoh pada projek saya adalah pemisahan `CarController` yang awalnya berada di dan extends `ProductController`
+    menjadi class independent sendiri. Kemudian perubahan penggunaan `CarServiceImpl` menjadi `CarService` saja agar ketergantungan menuju ke abstract class bukan concrete class.
+
+3. Explain the disadvantages of not applying SOLID principles to your project with examples.
+    Dengan tidak menggunakan SOLID, kode akan menjadi fragile, tidak fleksibel, tidak mudah untuk dimodifikasi, readibility menurun, dan tidak maintainable. Sehingga secara umum ini akan menurunkan kualitas kode dan
+    produktivitas dari programmernya. Seperti misalnya pada kode saya, awalnya `CarController` berada pada file dan extends `ProductController`. Hal ini mengakibatkan apabila kita ingin memodifikasi salah satu objek controller saja,
+    maka akan mempengaruhi yang lain. Dengan posisi awalnya `CarController` merupakan subclass dari `ProductController` memberikan dependensi satu sama lain yang tidak diperlukan. Ini contoh bawah dengan tidak adanya SOLID 
+    membuat kode menjadi tidak maintainable. Sebenarnya sangat lebih baik apabila kedua contoller tersebut dipisah seperti yang sudah saya lakukan di branch after-solid agar menerapkan SRP. 
+</details>
 
 <details>
 <summary><b>REFLECTION MODULE 2</b></summary>
-
-## Link Deployment:
-https://armed-adelaida-alyssalayla-573dd321.koyeb.app
 
 
 You have implemented a CI/CD process that automatically runs the test suites, analyzes code quality, and deploys to a PaaS. 
