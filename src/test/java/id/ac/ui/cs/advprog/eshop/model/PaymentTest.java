@@ -2,6 +2,7 @@ package id.ac.ui.cs.advprog.eshop.model;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import id.ac.ui.cs.advprog.eshop.enums.PaymentStatus;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -55,6 +56,7 @@ class PaymentTest {
         assertEquals("eb558e9f-1c39-460e-8860-54eb1396d79b" ,payment.getId());
         assertEquals("VoucherCode", payment.getMethod());
         assertSame(order, payment.getOrder());
+        assertEquals(PaymentStatus.REJECTED.getValue(), payment.getStatus());
         assertSame(paymentData, payment.getPaymentData());
     }
 
@@ -76,7 +78,7 @@ class PaymentTest {
     @Test
     void testCreatePaymentWithStatus() {
         Payment payment = new Payment("eb558e9f-1c39-460e-8860-54eb1396d79b", "VoucherCode", order, paymentData, "SUCCESS");
-        assertEquals("SUCCESS", payment.getStatus());
+        assertEquals(PaymentStatus.SUCCESS.getValue(), payment.getStatus());
     }
 
     @Test
