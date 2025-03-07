@@ -5,6 +5,19 @@
 https://armed-adelaida-alyssalayla-573dd321.koyeb.app
 
 <details>
+<summary><b>REFLECTION MODULE 4</b></summary>
+You have followed the Test-Driven Development workflow in the Exercise. Now answer these questions:
+
+1. Reflect based on Percival (2017) proposed self-reflective questions (in “Principles and Best Practice of Testing” submodule, chapter “Evaluating Your Testing Objectives”), whether this TDD flow is useful enough for you or not. If not, explain things that you need to do next time you make more tests.
+    TDD merupakan prinsip yang sangat penting dan bagus untuk diterapkan dalam programming. Namun, bagi saya pribadi, terkadang saya sedikit kebingungan untuk memulai membuat program dikarenakan saya terbiasa untuk memulai dari kode program dulu baru masuk ke testing. 
+    Namun, saya sadari bahwa cara lama saya tidaklah efisien dikarenakan shearusnya test yang menjadi standar untuk kode yang kita buat, bukan sebaliknya.
+
+2.  You have created unit tests in Tutorial. Now reflect whether your tests have successfully followed F.I.R.S.T. principle or not. If not, explain things that you need to do the next time you create more tests.
+    Saya sudah menerapakan F.I.R.S.T principle dengan cukup baik. Di mana saya sudah menggunakan RED, GREEN, dan REFACTOR pada kode saya sesuai dengan class class yang ada. Namun, tetap perlu pengembangan dalam kode saya sebagai contoh, untuk paymentMethod sebenarnya
+    masih bisa untuk di REFACTOR menjadi enum sehingga lebih rapi. Juga sepertinya masih ada beberapa kode yang bisa diREFACTOR agar lebih baik. Namun secara keseluruhan, saya rasa saya sudah cukup menerapkan prinsip ini dengan baik, hanya perlu finishing yang lebih rapi.
+</details>
+
+<details>
 <summary><b>REFLECTION MODULE 3</b></summary>
 Apply the SOLID principles you have learned. You are allowed to modify the source code according to the principles you want to implement. Please answer the following questions: 
 
