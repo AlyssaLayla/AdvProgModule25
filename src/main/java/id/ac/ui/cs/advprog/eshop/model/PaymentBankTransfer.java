@@ -15,6 +15,12 @@ public class PaymentBankTransfer extends Payment {
     }
 
     private static String validateBankTransfer(Map<String, String> paymentData) {
-        return null;
+        String bankName = paymentData.get("bankName");
+        String referenceCode = paymentData.get("referenceCode");
+
+        if (bankName == null || bankName.isEmpty() || referenceCode == null || referenceCode.isEmpty()) {
+            return PaymentStatus.REJECTED.getValue();
+        }
+        return PaymentStatus.SUCCESS.getValue();
     }
 }
