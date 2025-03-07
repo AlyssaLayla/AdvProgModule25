@@ -41,7 +41,7 @@ class PaymentVoucherCodeTest {
     void testCreatePaymentWithValidVoucherCode() {
         paymentData.put("voucherCode", "ESHOP1234ABC5678");
         PaymentVoucherCode payment = new PaymentVoucherCode("payment-123", order, paymentData);
-        assertEquals(PaymentStatus.REJECTED.getValue(), payment.getStatus());
+        assertEquals(PaymentStatus.SUCCESS.getValue(), payment.getStatus());
     }
 
     @Test
@@ -56,5 +56,40 @@ class PaymentVoucherCodeTest {
         paymentData.put("voucherCode", "ESHOP1234ABC5678");
         PaymentVoucherCode payment = new PaymentVoucherCode("payment-123", order, paymentData, PaymentStatus.SUCCESS.getValue());
         assertEquals(PaymentStatus.SUCCESS.getValue(), payment.getStatus());
+    }
+
+    @Test
+    void testCreatePaymentWithInvalidVoucherCodeTooShort() {
+        paymentData.put("voucherCode", "ESHOP1234ABC567"); // 15 chars instead of 16
+        PaymentVoucherCode payment = new PaymentVoucherCode("payment-123", order, paymentData);
+        assertEquals(PaymentStatus.REJECTED.getValue(), payment.getStatus());
+    }
+
+    @Test
+    void testCreatePaymentWithInvalidVoucherCodeWrongPrefix() {
+        paymentData.put("voucherCode", "SHOP1234ABC5678");
+        PaymentVoucherCode payment = new PaymentVoucherCode("payment-123", order, paymentData);
+        assertEquals(PaymentStatus.REJECTED.getValue(), payment.getStatus());
+    }
+
+    @Test
+    void testCreatePaymentWithInvalidVoucherCodeNotEnoughNumbers() {
+        paymentData.put("voucherCode", "ESHOP12ABCD5678");
+        PaymentVoucherCode payment = new PaymentVoucherCode("payment-123", order, paymentData);
+        assertEquals(PaymentStatus.REJECTED.getValue(), payment.getStatus());
+    }
+
+    @Test
+    void testCreatePaymentWithInvalidVoucherCodeTooManyNumbers() {
+        paymentData.put("voucherCode", "ESHOP123456789012");
+        PaymentVoucherCode payment = new PaymentVoucherCode("payment-123", order, paymentData);
+        assertEquals(PaymentStatus.REJECTED.getValue(), payment.getStatus());
+    }
+
+    @Test
+    void testCreatePaymentWithEmptyVoucherCode() {
+        paymentData.put("voucherCode", "");
+        PaymentVoucherCode payment = new PaymentVoucherCode("payment-123", order, paymentData);
+        assertEquals(PaymentStatus.REJECTED.getValue(), payment.getStatus());
     }
 }
