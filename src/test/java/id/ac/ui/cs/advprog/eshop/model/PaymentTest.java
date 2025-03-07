@@ -73,5 +73,42 @@ class PaymentTest {
             Payment payment = new Payment("eb558e9f-1c39-460e-8860-54eb1396d79b", "VoucherCode", null, paymentData);
         });
     }
+    @Test
+    void testCreatePaymentWithStatus() {
+        Payment payment = new Payment("eb558e9f-1c39-460e-8860-54eb1396d79b", "VoucherCode", order, paymentData, "SUCCESS");
+        assertEquals("SUCCESS", payment.getStatus());
+    }
 
+    @Test
+    void testCreatePaymentWithInvalidStatus() {
+        assertThrows(IllegalArgumentException.class, () -> new Payment("eb558e9f-1c39-460e-8860-54eb1396d79b", "VoucherCode", order, paymentData, "INVALID"));
+    }
+
+    @Test
+    void testSetStatusValid() {
+        Payment payment = new Payment("eb558e9f-1c39-460e-8860-54eb1396d79b", "VoucherCode", order, paymentData);
+        payment.setStatus("SUCCESS");
+        assertEquals("SUCCESS", payment.getStatus());
+    }
+
+    @Test
+    void testSetStatusInvalid() {
+        Payment payment = new Payment("eb558e9f-1c39-460e-8860-54eb1396d79b", "VoucherCode", order, paymentData);
+        assertThrows(IllegalArgumentException.class, () -> payment.setStatus("INVALID"));
+    }
+
+    @Test
+    void testSetPaymentDataValid() {
+        Payment payment = new Payment("eb558e9f-1c39-460e-8860-54eb1396d79b", "VoucherCode", order, paymentData);
+        Map<String, String> newPaymentData = new HashMap<>();
+        newPaymentData.put("voucherCode", "ESHOP5678XYZ1234");
+        payment.setPaymentData(newPaymentData);
+        assertSame(newPaymentData, payment.getPaymentData());
+    }
+
+    @Test
+    void testSetPaymentDataInvalid() {
+        Payment payment = new Payment("eb558e9f-1c39-460e-8860-54eb1396d79b", "VoucherCode", order, paymentData);
+        assertThrows(IllegalArgumentException.class, () -> payment.setPaymentData(new HashMap<>()));
+    }
 }
