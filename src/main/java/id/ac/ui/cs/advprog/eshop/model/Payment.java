@@ -1,7 +1,7 @@
 package id.ac.ui.cs.advprog.eshop.model;
 import lombok.Getter;
 import java.util.Map;
-
+import java.util.Arrays;
 
 @Getter
 public class Payment {
@@ -29,6 +29,34 @@ public class Payment {
         }
 
         if (paymentData == null || paymentData.isEmpty()) {
+            throw new IllegalArgumentException();
+        } else {
+            this.paymentData = paymentData;
+        }
+    }
+
+    public Payment(String id, String method, Order order, Map<String, String> paymentData, String status) {
+
+        this(id, method, order, paymentData);
+        String[] statusList = {"SUCCESS", "REJECTED"};
+        if (Arrays.stream(statusList).noneMatch(item -> (item.equals(status)))) {
+            throw new IllegalArgumentException();
+        } else {
+            this.status = status;
+        }
+    }
+
+    public void setStatus(String status) {
+        String[] statusList = {"SUCCESS", "REJECTED"};
+        if (Arrays.stream(statusList).noneMatch(item -> (item.equals(status)))) {
+            throw new IllegalArgumentException();
+        } else {
+            this.status = status;
+        }
+    }
+
+    public void setPaymentData(Map<String, String> paymentData) {
+        if (paymentData.isEmpty()) {
             throw new IllegalArgumentException();
         } else {
             this.paymentData = paymentData;
